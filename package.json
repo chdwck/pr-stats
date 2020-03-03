@@ -16,6 +16,7 @@
     "yargs": "^15.1.0"
   },
   "devDependencies": {
-    "@types/yargs": "^15.0.4"
+    "@types/yargs": "^15.0.4",
+    "dotenv": "^8.2.0"
   }
 }
