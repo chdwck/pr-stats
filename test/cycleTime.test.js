@@ -1,3 +1,4 @@
+const parseISO = require("date-fns/parseISO");
 const {
   _helpers: {
     hasFetchedFarEnoughBack,
@@ -41,11 +42,12 @@ describe("toUsefulData", () => {
   it("should correctly extract the data we want to use", () => {
     const pr = pullRequest();
     expect(toUsefulData(pr)).toMatchObject({
-      created_at: pr.created_at,
-      closed_at: pr.closed_at,
+      created_at: parseISO(pr.created_at),
+      closed_at: parseISO(pr.closed_at),
       author_name: pr.user.login,
       title: pr.title,
-      url: pr.url
+      url: pr.url,
+      first_reviewed: pr.reviews[0].data.submitted_at
     });
   });
 });
@@ -95,7 +97,9 @@ describe("removePrsBeforeAndAfter", () => {
   });
 
   it("should only return the dates between to and from", () => {
-    expect(removePrsBeforeAndAfter(prList, { to, from })).toEqual(expectedFromAndTo);
+    expect(removePrsBeforeAndAfter(prList, { to, from })).toEqual(
+      expectedFromAndTo
+    );
   });
 
   it("should return the whole list if to and from are null", () => {
