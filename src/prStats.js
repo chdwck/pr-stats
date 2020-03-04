@@ -6,13 +6,13 @@ const {
   addBusinessDays
 } = require("date-fns");
 
-exports.prStats = async (url, apiKey) => {
+exports.prStats = async url => {
   const myUrl = new URL(url);
   const [owner, repo, pull, pull_number] = myUrl.pathname
     .replace(/^(\/)/, "")
     .split("/");
 
-  const gh = new Octokit({ auth: apiKey });
+  const gh = new Octokit({ auth: process.env.GH_API_KEY });
   const pr = await gh.pulls.get({ owner, repo, pull_number });
   const reviews = await gh.pulls.listReviews({ owner, repo, pull_number });
 

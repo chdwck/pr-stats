@@ -5,7 +5,7 @@
   "main": "index.js",
   "bin": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./test"
   },
   "author": "Michael Shihrer",
   "license": "ISC",
@@ -17,6 +17,8 @@
   },
   "devDependencies": {
     "@types/yargs": "^15.0.4",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "faker": "^4.1.0",
+    "jest": "^25.1.0"
   }
 }
