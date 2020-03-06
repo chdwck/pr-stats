@@ -27,4 +27,13 @@ function wait(delay) {
   });
 }
 
-module.exports = { stringToArr, wait };
+/**
+ * Creates a table to be printed using same object keys as headers
+ * @param {[Objects]}
+ * @returns {String}
+ */
+function formatTable() {
+
+}
+
+module.exports = { stringToArr, wait, formatTable };
