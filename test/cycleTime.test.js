@@ -12,25 +12,25 @@ const { pullRequest } = require("./data/pullRequest.js");
 describe("hasFetchedFarEnoughBack", () => {
   var prList = [
     {
-      created_at: new Date("2020-01-22").toISOString(),
-      closed_at: new Date("2020-01-23").toISOString(),
+      created_at: parseISO("2020-01-22"),
+      closed_at: parseISO("2020-01-23"),
       author_name: "chdwck",
       url: "www.somewhere.com/1"
     },
     {
-      created_at: new Date("2020-01-24").toISOString(),
-      closed_at: new Date("2020-01-25").toISOString(),
+      created_at: parseISO("2020-01-24"),
+      closed_at: parseISO("2020-01-25"),
       author_name: "chdwck",
       url: "www.somewhere.com/2"
     }
   ];
 
   it("should return false if there aren't any prs past the from argument", () => {
-    expect(hasFetchedFarEnoughBack(prList, "2020-01-26")).toEqual(false);
+    expect(hasFetchedFarEnoughBack(prList, parseISO("2020-01-26"))).toEqual(false);
   });
 
   it("should return true if there are any prs past the from argument", () => {
-    expect(hasFetchedFarEnoughBack(prList, "2020-01-23")).toEqual(true);
+    expect(hasFetchedFarEnoughBack(prList, parseISO("2020-01-23"))).toEqual(true);
   });
 
   it("should return true if list is less then 100 items if from is null", () => {
@@ -47,7 +47,7 @@ describe("toUsefulData", () => {
       author_name: pr.user.login,
       title: pr.title,
       url: pr.url,
-      first_reviewed: pr.reviews[0].data.submitted_at
+      first_reviewed: parseISO(pr.reviews[0].submitted_at)
     });
   });
 });
@@ -74,16 +74,16 @@ describe("filterPrsByUsers", () => {
 
 describe("removePrsBeforeAndAfter", () => {
   const prList = [
-    { created_at: new Date("2020-01-01").toISOString() },
-    { created_at: new Date("2020-01-02").toISOString() },
-    { created_at: new Date("2020-01-03").toISOString() },
-    { created_at: new Date("2020-04-04").toISOString() }
+    { created_at: parseISO("2020-01-01") },
+    { created_at: parseISO("2020-01-02") },
+    { created_at: parseISO("2020-01-03") },
+    { created_at: parseISO("2020-04-04") }
   ];
 
-  var to = "2020-01-02";
+  var to = parseISO("2020-01-02");
   var expectedTo = [prList[1], prList[2], prList[3]];
 
-  var from = "2020-01-03";
+  var from = parseISO("2020-01-03");
   var expectedFrom = [prList[0], prList[1], prList[2]];
 
   var expectedFromAndTo = [prList[1], prList[2]];

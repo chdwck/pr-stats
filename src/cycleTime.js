@@ -27,8 +27,8 @@ async function cycleTime({
   let page = 1;
   let error = null;
 
-  const formattedForm = parseISO(new Date(form).toISOString());
-  const formattedTo = parseISO(new Date(to).toISOString());
+  const formattedForm = parseISO(from);
+  const formattedTo = parseISO(to);
 
   do {
     try {

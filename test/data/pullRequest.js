@@ -53,9 +53,7 @@ function pullRequest() {
     author_association: "COLLABORATOR",
     reviews: [
       {
-        data: {
-          submitted_at: faker.date.past().toISOString()
-        }
+        submitted_at: faker.date.past().toISOString()
       }
     ]
   };
