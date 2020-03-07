@@ -35,22 +35,20 @@ test("formatTable", () => {
   const objs2 = [...objs1, { name: "Kiandra", aptitude: "lashes" }];
   expect(formatTable(objs1)).toEqual(
     `
-    ---------
-    name     
-    ---------
-    Chadwick 
-    ---------
-    `
+----------
+ name     
+----------
+ Chadwick 
+----------`
   );
 
   expect(formatTable(objs2)).toEqual(
     `
-    ---------|------------
-    name     | aptitude   
-    ---------|------------
-    Chadwick | n/a        
-    Kiandra  | lashes     
-    ---------|------------
-    `
+----------|----------
+ name     | aptitude 
+----------|----------
+ Chadwick | n/a      
+ Kiandra  | lashes   
+----------|----------`
   );
 });
