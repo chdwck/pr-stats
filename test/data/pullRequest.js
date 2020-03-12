@@ -51,11 +51,6 @@ function pullRequest() {
     comments_url: faker.internet.url(),
     statuses_url: faker.internet.url(),
     author_association: "COLLABORATOR",
-    reviews: [
-      {
-        submitted_at: faker.date.past().toISOString()
-      }
-    ]
   };
 }
 
